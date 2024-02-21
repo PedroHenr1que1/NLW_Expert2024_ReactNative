@@ -3,7 +3,7 @@ import { useState, useRef } from "react"
 
 import { Link } from "expo-router"
 
-import { CATEGORIES, MENU } from "@/utils/data/products"
+import { CATEGORIES, MENU, ProductProps } from "@/utils/data/products"
 
 import { Header } from "@/components/header"
 import { CategoryButton } from "@/components/category-button"
@@ -16,7 +16,7 @@ export default function Home(){
 
   const [getCategory, setCategory] = useState<string>(CATEGORIES[0])
 
-  const sectionListRef = useRef<SectionList>(null)
+  const sectionListRef = useRef<SectionList<ProductProps>>(null)
 
   const cartQauntityItems = cartStore.products.reduce((total, product) => total + product.quantity, 0)
 
@@ -49,7 +49,7 @@ export default function Home(){
           />
         )}
         horizontal
-        className="max-h-10 mt-5"
+        className="max-h-10 mt-5 mb-1.5"
         contentContainerStyle={{gap: 12, paddingHorizontal: 20}}
         showsHorizontalScrollIndicator={false}
       />
